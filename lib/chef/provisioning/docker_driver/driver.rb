@@ -197,7 +197,7 @@ module DockerDriver
         docker_options = machine_options[:docker_options]
         Chef::Log.debug("Start machine for container #{container_name} using base image #{base_image_name} with options #{docker_options.inspect}")
         image = image_named(base_image_name)
-        container = Docker::Container.create('Image' => image.id, 'name' => container_name)
+        container = Docker::Container.create('Cmd' => :command, 'Image' => image.id, 'name' => container_name)
         Chef::Log.debug("Container id: #{container.id}")
         machine_spec.location['container_id'] = container.id
       end
