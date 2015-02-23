@@ -61,7 +61,7 @@ module DockerDriver
       live_stream = STDOUT if options[:stream]
       live_stream = options[:stream_stdout] if options[:stream_stdout]
 
-      args = ['docker', 'run', '--name', container_name]
+      args = ['docker', 'run', '--net', 'host','--name', container_name]
 
       if options[:env]      
 	options[:env].each do |key, value| 
